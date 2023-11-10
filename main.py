@@ -2,12 +2,8 @@
 # @Author : Belmaxi
 
 from utils.autoload_required import check_pack
-import os
 from utils.parser import Parser
-import requests
-from bs4 import BeautifulSoup
 from export.xlsx_exporter import XlsxExport
-import pandas as pd
 #自动安装依赖
 check_pack()
 
@@ -23,7 +19,6 @@ for i in idx2tit:
     except Exception:
         break
     if len(url) > 4:
-        # urls.append([url,i])
         parser = Parser(url)
         print(f"========正在爬取{i}信息=======")
 
@@ -32,10 +27,9 @@ for i in idx2tit:
 
 file.close()
 
-print(f"======================")
-print("正在导出excel")
-exporter.export(res,)
+
+exporter.export(res)
 exporter.set_style()
-print("导出完成")
+print("\033[92m导出完成\033[0m")
 print("================================")
 input("press any to continue...")

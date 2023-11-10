@@ -8,6 +8,8 @@ class XlsxExport:
         self.xlsx_name = _name
 
     def export(self,info) -> None:
+        print(f"======================")
+        print("正在导出excel")
         with pd.ExcelWriter(self.xlsx_name) as writer:
             for i in info:
                 i[0] = pd.DataFrame(i[0])
