@@ -1,10 +1,24 @@
-import requests
-from bs4 import BeautifulSoup
-import pandas as pd
-from openpyxl import load_workbook
-from openpyxl.styles import Alignment
-import os
+# -*- coding:utf-8 -*-
+# @Author : Belmaxi
 
+#自动安装依赖
+try:
+    print("正在检查依赖")
+    import requests
+    from bs4 import BeautifulSoup
+    import pandas as pd
+    from openpyxl import load_workbook
+    from openpyxl.styles import Alignment
+    import os
+except ImportError:
+    import pip
+    pip.main(["install", "requests", "bs4", "pandas"])
+    import requests
+    from bs4 import BeautifulSoup
+    import pandas as pd
+    from openpyxl import load_workbook
+    from openpyxl.styles import Alignment
+    import os
 
 # 解析url,返回html文本
 def get_single_html(url):
@@ -100,3 +114,6 @@ for ws in wb._sheets:
 wb.save("standing.xlsx")
 
 print("导出完成")
+
+print("================================")
+input("press any to continue...")
