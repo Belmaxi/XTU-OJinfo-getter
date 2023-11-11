@@ -1,15 +1,15 @@
 import pandas as pd
 from openpyxl import load_workbook
 from openpyxl.styles import Alignment
+from utils.printer import Printer
 
 class XlsxExport:
-
     def __init__(self, _name = "Untitled.xlsx") -> None:
         self.xlsx_name = _name
 
     def export(self,info) -> None:
-        print(f"======================")
-        print("正在导出excel")
+        Printer.console_print_warning("======================")
+        Printer.console_print_warning("正在导出excel")
         with pd.ExcelWriter(self.xlsx_name) as writer:
             for i in info:
                 i[0] = pd.DataFrame(i[0])

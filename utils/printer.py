@@ -1,19 +1,38 @@
-color_dic = {
-    "green":92,
+class Color():
+    RED = 91
+    GREEN = 92
+    YELLOW = 93
+    BLUE = 94
+    PURPLE = 95
+    CYAN = 96
 
-}
 
 
 class Printer:
-    def _get_left_str(self,id):
+    @staticmethod
+    def _get_left_str(id):
         return f"\033[{id}m"
     
-    def _get_right_str(self):
+    @staticmethod
+    def _get_right_str():
         return f"\033[0m"
     
-    def print(self,text,color):
-        content = self._get_left_str(color_dic[color]) + text + self._get_right_str()
+    @staticmethod
+    def print(text,color:int) -> None:
+        content = Printer._get_left_str(color) + text + Printer._get_right_str()
         print(content)
+    
+    @staticmethod
+    def console_print_warning(text) -> None:
+        Printer.print(text,Color.YELLOW)
+    
+    @staticmethod
+    def console_print_success(text) -> None:
+        Printer.print(text,Color.GREEN)
+    
+    @staticmethod
+    def console_print_error(text) -> None:
+        Printer.print(text,Color.RED)
 
 
 if __name__ == "__main__":
